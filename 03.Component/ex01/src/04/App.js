@@ -11,7 +11,7 @@ function App() {
                 props05={['javascript', 'react', 'es6']}
                 props06={() => '함수'}
                 props07={10}
-                props08={[true, false, false]}
+                props08={[true, false, true]}
                 props09={{
                     no: 10,
                     name: '마이콜',

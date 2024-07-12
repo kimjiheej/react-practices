@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Component 작성 및 Property",
   "main": "index.js",
-  "scripts": {
+"scripts": {
     "start": "npx webpack serve --config config/webpack.config.js --progress --mode development --env",
     "build": "npm install && npx webpack --config config/webpack.config.js --mode production"
-  },
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
