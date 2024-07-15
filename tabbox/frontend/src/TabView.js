@@ -5,6 +5,7 @@ function TabView({contents}) {
     return (
         <div className={Tab_View}>
             {contents}
+            
         </div>
     );
 }

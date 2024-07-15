@@ -8,7 +8,9 @@ function TabItem({ name, active, selectTab }) {
             onClick={selectTab} // 클릭 시 selectTab 함수 실행
         >
             {name}
+            
         </li>
     );
 }
 export default TabItem;
+
