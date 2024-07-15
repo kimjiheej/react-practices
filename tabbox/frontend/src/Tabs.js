@@ -10,7 +10,6 @@ function Tabs({tabs, selectTab}) {
                     key={t.no} 
                     name={t.name} 
                     active={t.active} 
-                    no = {t.no}
                     selectTab={() => selectTab(no)} 
                 />
             ))}
