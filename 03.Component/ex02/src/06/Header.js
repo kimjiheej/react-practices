@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import {Header} from './assets/scss/Header.scss';
 import styled from 'styled-components';
 const StyledDiv = styled.h1`
     width: 280px;

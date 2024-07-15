@@ -1,8 +1,8 @@
-import React from 'react';
-import RegisterForm from './RegisterForm';
-import SearchBar from './SearchBar';
-import Emaillist from './Emaillist';
-import './assets/scss/App.scss';
+import React from 'react'; 
+import RegisterForm from './RegisterForm'; 
+import SearchBar from './SearchBar'; 
+import Emaillist from './Emaillist'; 
+import './assets/scss/App.scss'; 
 
 function App() {
     const emails = [
@@ -33,12 +33,12 @@ function App() {
     ];
 
     return (
-        <div id={'App'}>
-            <RegisterForm />
-            <SearchBar />
-            <Emaillist emails={emails} />
-        </div>
+       <div id={'App'}>
+        <RegisterForm />
+        <SearchBar />
+        <Emaillist emails = {emails} />
+       </div>
     );
 }
 
-export default App;
+export default App; 

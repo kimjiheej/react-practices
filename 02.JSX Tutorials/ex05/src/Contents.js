@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-function Contents(props) {
-    return (
-        <>
-        <p>특징3: JSX 표현식 표기법</p>
-        <div>00</div>
-        </>
-    )
+class Contents extends Component {
+    render() {
+        return (
+           <p>클래스 컴포넌트</p>
+        );
+    }
 }
+
 export default Contents;

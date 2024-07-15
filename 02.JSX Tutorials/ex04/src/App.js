@@ -4,13 +4,17 @@ import Contents from './Contents';
 
 function App() {
     // return (
-    //     <div id={'App'} className={'Header'}>
+    //     <div id={'App'}>
     //         <Header />
     //         <Contents />
     //     </div>
     // );
 
-    return React.createElement('div',{id: 'App'}, React.createElement(Header(), null), React.createElement(Contents,null)); 
+    return React.createElement(
+            'div',
+            {id: 'App'},
+            React.createElement(Header, null),
+            React.createElement(Contents, null));
 }
 
 export {App};

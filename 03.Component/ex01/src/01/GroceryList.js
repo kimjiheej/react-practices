@@ -2,9 +2,6 @@ import React from 'react';
 import GroceryItem
  from './GroceryItem';
 function GroceryList(props) {
-
-    name += "!!!"; 
-
     return (
         <ol className={'grocery-list'}>
             <GroceryItem name={'Milk'} count={10}/>
@@ -15,4 +12,3 @@ function GroceryList(props) {
 }
 
 export default GroceryList;
-

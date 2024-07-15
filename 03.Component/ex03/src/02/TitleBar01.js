@@ -5,18 +5,17 @@ export default class TitelBar01 extends Component {
         super(props);
     }
 
-    onClickHandler(event) {
-        console.log('TitleBar01: clicked!'); 
+    onClickHandler() {
+        console.log('TitelBar01: clicked!');
     }
+
     render() {
         return (
             <div>
-                <h4 onClick={onHandler}>
+                <h4 onClick={this.onClickHandler}>
                     Function Handler in Class Component(click here!)
                 </h4>
             </div>
         );
     }
 }
-
-

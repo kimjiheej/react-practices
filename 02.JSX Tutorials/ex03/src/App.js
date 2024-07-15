@@ -1,8 +1,6 @@
 import React from 'react';
-import Header from './Header'; 
+import Header from './Header';
 import Contents from './Contents';
-
-
 function App() {
     return (
         <div>
@@ -12,4 +10,4 @@ function App() {
     );
 }
 
-export {App}; 
+export {App};

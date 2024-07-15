@@ -24,4 +24,3 @@ src/04: Property Validation : [package 추가] $ npm i prop-types
 
 2. 테스트
 $ npm start src=(01|02|03|04)
-

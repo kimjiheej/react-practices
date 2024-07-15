@@ -1,10 +1,9 @@
 import React from 'react';
 
-function TitelBar02() {
-
+function TitleBar02() {
     const onHandler = function() {
-        console.log('T'); 
-    }; 
+        console.log('TitleBar02: clicked!');
+    };
 
     return (
         <div>
@@ -15,7 +14,4 @@ function TitelBar02() {
     )
 }
 
-export default TitelBar02;
-
-
-
+export default TitleBar02;

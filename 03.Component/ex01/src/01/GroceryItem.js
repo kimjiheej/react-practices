@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GroceryItem({name,count}) {
+function GroceryItem({name, count}) {
     return (
         <li>
             <strong>{name}</strong>
@@ -10,4 +10,3 @@ function GroceryItem({name,count}) {
 }
 
 export default GroceryItem;
-
