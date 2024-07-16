@@ -8,9 +8,10 @@ function Tabs({tabs, selectTab}) {
             {tabs.map((t, no) => (
                 <TabItem 
                     key={t.no} 
+                    no = {t.no}
                     name={t.name} 
                     active={t.active} 
-                    selectTab={() => selectTab(no)} 
+                    selectTab={selectTab} 
                 />
             ))}
         </ul>

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Tab_Item } from './assets/scss/TabItem.scss';
 
-function TabItem({ name, active, selectTab }) {
+function TabItem({ no, name, active, selectTab }) {
     return (
         <li 
             className={`${Tab_Item} ${active ? 'active' : ''}`}
-            onClick={selectTab} // 클릭 시 selectTab 함수 실행
-        >
+            onClick={ () => {
+                selectTab(no);
+            }}>
             {name}
         </li>
     );

@@ -8,12 +8,16 @@ function TabBox() {
 
     // setActiveIndex 를 활용하여 activeIndex 를 조정한다 
     const [activeIndex, setActiveIndex] = useState(0);
+    const selectTab = function(no) {
+        //  const index = tabs.map(e => e.no).indexOf(no); 
+        // setActiveIndex(index); 
+        setActiveIndex(tabs.findIndex(e=> e.no === no));  // 한번에 깔끔하게 짜기 .. 
+    }; 
 
     return (
         <div className={Tab_Box}>
             <Tabs
-                selectTab={(no) => setActiveIndex(no)}
-
+                selectTab={selectTab}
                 tabs={tabs.map((e, i) => {
                     const {contents, ...rest} = e;
                     if(i === activeIndex) {
@@ -28,3 +32,7 @@ function TabBox() {
 }
 
 export default TabBox;
+
+
+
+
