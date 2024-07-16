@@ -1,12 +1,12 @@
 import React from 'react';
-import './assets/scss/Task.scss';
+import {_Task, Task_Remove} from './assets/scss/Task.scss';
 
 function Task({ task, onRemove }) {
   return (
-    <li className="_Task">
+    <li className="{_Task}">
       <input type="checkbox" checked={task.done} readOnly />
       {task.name}
-      <a href="#" className="Task_Remove" onClick={() => onRemove(task.no)}></a>
+      <a href="#" className={Task_Remove} onClick={() => onRemove(task.no)}></a>
     </li>
   );
 }
