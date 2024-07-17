@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { _Card, Card_Title, Card_Title_Open} from './assets/scss/Card.scss';
+import { _Card, Card_Title, Card_Title_Open } from './assets/scss/Card.scss';
 import TaskList from './TaskList';
 
 function Card({ title, description, tasks: initialTasks, isToDo }) {
