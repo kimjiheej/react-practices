@@ -22,7 +22,7 @@
     }
   }
 
-  &.Card_Title_Open {
+  .Card_Title_Open {
     .Card_Title:before {
       content: '▾';
     }

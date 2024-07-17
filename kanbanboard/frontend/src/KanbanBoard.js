@@ -1,8 +1,7 @@
 import React from 'react';
-import {Kanban_Board} from './assets/scss/KanbanBoard.scss';
+import { Kanban_Board } from './assets/scss/KanbanBoard.scss';
 import CardList from './CardList';
 import data from './assets/json/data';
-
 
 function KanbanBoard() {
   const toDoCards = data.filter(card => card.status === "ToDo");
@@ -11,9 +10,9 @@ function KanbanBoard() {
 
   return (
     <div className={Kanban_Board}>
-      <CardList title="To Do" cards={toDoCards} />
-      <CardList title="Doing" cards={inProgressCards} />
-      <CardList title="Done" cards={doneCards} />
+      <CardList title="To Do" cards={toDoCards} isToDo={true} />
+      <CardList title="Doing" cards={inProgressCards} isToDo={false} />
+      <CardList title="Done" cards={doneCards} isToDo={false} />
     </div>
   );
 }
