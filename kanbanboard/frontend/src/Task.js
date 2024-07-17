@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { _Task, Task_Remove } from './assets/scss/Task.scss';
 
-function Task({ task, onRemove }) {
-  const [isChecked, setIsChecked] = useState(false); // 초기 상태를 false로 설정
+function Task({ task, onToggle, onRemove }) {
+  const [isChecked, setIsChecked] = useState(task.done);
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-    // 부모 컴포넌트로 상태 변경을 선택적으로 전달할 수 있습니다
-    // onToggleDone(task.no, !isChecked);
+    const newCheckedStatus = !isChecked;
+    setIsChecked(newCheckedStatus);
+    onToggle(task.no, newCheckedStatus);
   };
 
   return (
