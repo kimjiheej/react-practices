@@ -79,7 +79,7 @@ spring:
       cache: true         
 
 server:
-   port: 8081
+   port: 8082
 
 logging:
    pattern:
