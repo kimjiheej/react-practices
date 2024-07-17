@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { _Task, Task_Remove } from './assets/scss/Task.scss';
 
 function Task({ task, onRemove }) {
-  const [isChecked, setIsChecked] = useState(task.done);
+  const [isChecked, setIsChecked] = useState(false); // 초기 상태를 false로 설정
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
