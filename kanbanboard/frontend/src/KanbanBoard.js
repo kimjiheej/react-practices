@@ -10,9 +10,9 @@ function KanbanBoard() {
 
   return (
     <div className={Kanban_Board}>
-      <CardList title="To Do" cards={toDoCards} isToDo={true} />
-      <CardList title="Doing" cards={inProgressCards} isToDo={false} />
-      <CardList title="Done" cards={doneCards} isToDo={false} />
+      <CardList title="To Do" cards={toDoCards} />
+      <CardList title="Doing" cards={inProgressCards} />
+      <CardList title="Done" cards={doneCards} />
     </div>
   );
 }

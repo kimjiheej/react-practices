@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { _Card, Card_Title, Card_Title_Open } from './assets/scss/Card.scss';
 import TaskList from './TaskList';
 
-function Card({ title, description, tasks }) {
+function Card({ title, description, tasks, isToDo }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleCard = () => {
-    setIsOpen(!isOpen); // isOpen 상태를 반전시킴
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -15,7 +15,7 @@ function Card({ title, description, tasks }) {
       {isOpen && (
         <div className="Card_Details">
           {description}
-          <TaskList tasks={tasks} />
+          <TaskList tasks={tasks} isToDo={isToDo} />
         </div>
       )}
     </div>
