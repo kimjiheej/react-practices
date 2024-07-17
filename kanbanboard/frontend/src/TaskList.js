@@ -19,9 +19,7 @@ function TaskList({ tasks, isToDo, onTaskToggle, onRemove }) {
           <Task key={task.no} task={task} onToggle={onTaskToggle} onRemove={onRemove} />
         ))}
       </ul>
-      {isToDo && (
         <input className={Input_Add_Task} type="text" placeholder="태스크 추가" onSubmit={handleAddTask} />
-      )}
     </div>
   );
 }
