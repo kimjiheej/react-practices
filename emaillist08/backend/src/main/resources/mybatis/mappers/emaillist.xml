@@ -23,7 +23,7 @@
 			</otherwise>
 		</choose>		
 	</select>
-
+	
 	<insert id="insert" parameterType="emaillistvo">
 		<![CDATA[
 		insert
@@ -36,4 +36,11 @@
 			]]>		
 		</selectKey>
 	</insert>
+	
+	<delete id="delete" parameterType="long">
+    delete from emaillist where no = #{no}
+</delete>
+
 </mapper>
+
+
