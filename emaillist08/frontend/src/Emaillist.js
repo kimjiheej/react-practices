@@ -1,20 +1,20 @@
 import React from 'react';
-import {Email_List} from './assets/scss/Emaillist.scss';
 import Email from './Email';
 
-function Emaillist({emails}) {
+function Emaillist({ emails, onDelete }) {
     return (
-        <ul className={Email_List}>
-            {
-
-                    emails?.map(email => <Email
-                                            key={email.no}
-                                            no={email.no}
-                                            firstName={email.firstName}
-                                            lastName={email.lastName}
-                                            email={email.email} />)
-
-            }
+        <ul>
+            {emails &&
+                emails.map((email) => (
+                    <Email
+                        key={email.no}
+                        no={email.no}
+                        firstName={email.firstName}
+                        lastName={email.lastName}
+                        email={email.email}
+                        onDelete={onDelete} // onDelete 콜백 전달
+                    />
+                ))}
         </ul>
     );
 }

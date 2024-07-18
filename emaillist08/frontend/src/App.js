@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import RegisterForm from './RegisterForm';
 import SearchBar from './SearchBar';
 import Emaillist from './Emaillist';
@@ -18,18 +18,18 @@ function App() {
                 body: JSON.stringify(email)
             });
 
-            if(!response.ok) {
+            if (!response.ok) {
                 throw new Error(`${response.status} ${response.statusText}`);
             }
 
             const json = await response.json();
 
-            if(json.result !== 'success') {
+            if (json.result !== 'success') {
                 throw new Error(json.message);
             }
 
             setEmails([json.data, ...emails]);
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
     };
@@ -41,25 +41,51 @@ function App() {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
-                },
-                body: null
+                }
             });
 
-            if(!response.ok) {
+            if (!response.ok) {
                 throw new Error(`${response.status} ${response.statusText}`);
             }
 
             const json = await response.json();
 
-            if(json.result !== 'success') {
+            if (json.result !== 'success') {
                 throw new Error(json.message);
             }
 
             setEmails(json.data);
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
-    }
+    };
+
+    const deleteEmail = async (id) => {
+        try {
+            const response = await fetch(`/api/${id}`, {
+                method: 'delete',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+    
+            const json = await response.json();
+    
+            if (json.result !== 'success') {
+                throw new Error(json.message);
+            }
+    
+            // 삭제 후 목록 다시 가져오기
+            fetchEmails();
+        } catch (err) {
+            console.error('삭제 오류:', err);
+        }
+    };
 
     useEffect(() => {
         fetchEmails();
@@ -67,9 +93,9 @@ function App() {
 
     return (
         <div id={'App'}>
-            <RegisterForm addEmail={addEmail}/>
+            <RegisterForm addEmail={addEmail} />
             <SearchBar fetchEmails={fetchEmails} />
-            <Emaillist emails={emails} />
+            <Emaillist emails={emails} onDelete={deleteEmail} />
         </div>
     );
 }
