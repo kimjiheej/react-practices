@@ -4,7 +4,6 @@
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-	
 	<typeAliases>
 		<typeAlias type="com.poscodx.emaillist.vo.EmaillistVo" alias="emaillistvo" />
     </typeAliases>	

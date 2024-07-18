@@ -26,7 +26,6 @@ public class ApiController {
 	@GetMapping("/api")
 	public ResponseEntity<JsonResult> read(@RequestParam(value="kw", required=true, defaultValue="") String keyword) {
 		log.info("Request[GET /api]:" + keyword);
-		
 		return ResponseEntity
 					.status(HttpStatus.OK)
 					.body(JsonResult.success(emaillistRepository.findAll(keyword)));
@@ -37,10 +36,17 @@ public class ApiController {
 		log.info("Request[POST /api]:" + vo);
 		
 		emaillistRepository.insert(vo);
-		
 		return ResponseEntity
 					.status(HttpStatus.OK)
 					.body(JsonResult.success(vo));
+	}
+	
+	@DeleteMapping("/api/{no}")
+	public ResponseEntity<JsonResult> delete(@PathVariable("no") Long no) {
+	       
+	        return ResponseEntity
+	        		.status(HttpStatus.OK)
+	        		.body(JsonResult.success(emaillistRepository.delete(no)));
 	}
 	
 }
