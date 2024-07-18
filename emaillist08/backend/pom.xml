@@ -41,12 +41,25 @@
             <scope>test</scope>
         </dependency>
 
+<!-- MyBatis Starter -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		
         <!-- Thymeleaf Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+	<!-- Mariadb JDBC -->
+		<dependency>
+		    <groupId>org.mariadb.jdbc</groupId>
+		    <artifactId>mariadb-java-client</artifactId>
+		</dependency>
+		
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
