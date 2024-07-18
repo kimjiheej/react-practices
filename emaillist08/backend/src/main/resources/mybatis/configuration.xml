@@ -13,4 +13,3 @@
 		<mapper resource="mybatis/mappers/emaillist.xml" />
 	</mappers>
 </configuration>
-

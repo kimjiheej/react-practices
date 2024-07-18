@@ -8,10 +8,8 @@ import lombok.ToString;
 @Getter
 @ToString
 public class EmaillistVo {
-
 	private Long no;
 	private String firstName;
 	private String lastName;
 	private String email;
-	
 }

@@ -1,4 +1,4 @@
-package com.poscodx.emaillist.exception;
+package com.poscodx.kanbanboard.exception;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -12,25 +12,26 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.poscodx.emaillist.dto.JsonResult;
+import com.poscodx.kanbanboard.dto.JsonResult;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
+	
 	@ExceptionHandler(Exception.class)
-	public void handler(HttpServletRequest request, HttpServletResponse response, Exception e
-	) throws Exception {
+	public void handlerException(HttpServletRequest request, HttpServletResponse response, Exception e) throws Exception {
 		
 		// logging
 		StringWriter errors = new StringWriter();
 		e.printStackTrace(new PrintWriter(errors));
 		log.error(errors.toString());
 		
-		// 500 for json request
+		
+		// for json request
 		String accept = request.getHeader("accept");
-		if(accept.matches(".*application/json.*")) {
+		if(accept.matches(".*application/json.*")) { 
 			JsonResult jsonResult = JsonResult.fail(errors.toString());
 			String jsonString = new ObjectMapper().writeValueAsString(jsonResult);
 			
@@ -42,17 +43,15 @@ public class GlobalExceptionHandler {
 			
 			return;
 		}
-
+		
 		// 404 for html request
 		if(e instanceof NoHandlerFoundException) {
 			request.getRequestDispatcher("/error/404").forward(request, response);
 			return;
 		}
 		
-		// 500 for html request
-		request.setAttribute("error", errors.toString());
-		request
-			.getRequestDispatcher("/error/500")
-			.forward(request, response);
+		// 500 for html request 
+		request.setAttribute("errors", errors.toString());
+		request.getRequestDispatcher("/error/500").forward(request, response);
 	}
 }

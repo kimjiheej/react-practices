@@ -8,10 +8,10 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.16</version>
 		<relativePath/>
-	</parent>	
-	
+	</parent>
+
 	<groupId>com.poscodx</groupId>
-	<artifactId>emaillist8</artifactId>
+	<artifactId>kanbanboard</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	
@@ -41,25 +41,32 @@
 			<scope>test</scope>
 		</dependency>
 
+        <!-- Thymeleaf Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+		<!-- H2 Database -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
 		<!-- MyBatis Starter -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.2.0</version>
 		</dependency>
-		
-        <!-- Thymeleaf Starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-		
-		<!-- Mariadb JDBC -->
+
+		<!-- Mariadb JDBC Driver -->		
 		<dependency>
 		    <groupId>org.mariadb.jdbc</groupId>
 		    <artifactId>mariadb-java-client</artifactId>
 		</dependency>
-				
+		
 		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -68,9 +75,9 @@
 		</dependency>
 		
 	</dependencies>
-	
+
 	<build>
-		<finalName>emaillist8</finalName>
+		<finalName>kanbanboard</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -111,5 +118,6 @@
                 </configuration>
             </plugin>						
 		</plugins>		
-	</build>		
+	</build>
+			
 </project>
