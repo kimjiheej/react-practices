@@ -1,4 +1,5 @@
 const path = require('path');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = function(env) {
     return {
@@ -34,12 +35,24 @@ module.exports = function(env) {
                 type: 'asset/resource'
             }]
         },
+        plugins: [
+            new CaseSensitivePathsPlugin()
+        ],
+        devtool: "eval-source-map",        
         devServer: {
             host: '0.0.0.0',
             port: 9090,
             liveReload: true,
             compress: true,
-            hot: false
+            hot: false,
+            proxy: [{
+                context: ['/api', '/assets/gallery'],
+                target: 'http://localhost:8080',
+            }],            
+            static: {
+                directory: path.resolve('./public')
+            },
+            historyApiFallback: true
         }    
     };
 }
