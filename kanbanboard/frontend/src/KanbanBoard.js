@@ -11,10 +11,6 @@ function KanbanBoard() {
         const response = await fetch('/api/card');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const json = await response.json();
-
-        // JSON 데이터 출력
-        console.log('Fetched JSON:', json);
-
         if (json.result === 'success') {
           setCards(json.data || []); // 데이터가 없을 경우 빈 배열로 초기화
         } else {
@@ -32,11 +28,38 @@ function KanbanBoard() {
   const inProgressCards = cards.filter(card => card.status === "Doing");
   const doneCards = cards.filter(card => card.status === "Done");
 
+  const handleAddTask = async (cardNo, taskName) => {
+    try {
+      const response = await fetch('/api/registerTask', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: taskName,
+          done: 'false',
+          card_no: cardNo,
+        }),
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const json = await response.json();
+      if (json.result === 'success') {
+        // 새 작업이 성공적으로 추가되면 카드 목록을 다시 가져옵니다.
+        fetchCards();
+      } else {
+        console.error('API error:', json.message);
+      }
+    } catch (err) {
+      console.error('Error adding task:', err);
+    }
+  };
+
   return (
     <div className={Kanban_Board}>
-      <CardList title="To Do" cards={toDoCards} />
-      <CardList title="Doing" cards={inProgressCards} />
-      <CardList title="Done" cards={doneCards} />
+      <CardList title="To Do" cards={toDoCards} onAddTask={(taskName) => handleAddTask(toDoCards[0]?.no, taskName)} />
+      <CardList title="Doing" cards={inProgressCards} onAddTask={(taskName) => handleAddTask(inProgressCards[0]?.no, taskName)} />
+      <CardList title="Done" cards={doneCards} onAddTask={(taskName) => handleAddTask(doneCards[0]?.no, taskName)} />
     </div>
   );
 }
