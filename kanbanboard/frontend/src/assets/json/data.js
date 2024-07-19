@@ -27,7 +27,7 @@ export default [
     {
       "no": 3,
       "title": "React Study",
-      "description": "React.JS 공부 하기",
+      "description": "React.JS 공부 g하기",
       "status": "Doing",
       "tasks": [
         {

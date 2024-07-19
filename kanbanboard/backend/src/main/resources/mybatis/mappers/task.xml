@@ -20,4 +20,17 @@
 	]]>
 </insert>
 
+<update id="updateStatus" parameterType="map">
+	<![CDATA[
+	update task set done={#done } where no={#no }
+	]]>
+</update>
+
+   <delete id="deleteTask" parameterType="long">
+    <![CDATA[
+    DELETE FROM task
+    WHERE no = #{no}
+    ]]>
+</delete>
+
 </mapper>
