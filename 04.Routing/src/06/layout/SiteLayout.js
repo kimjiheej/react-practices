@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import * as styles from '../assets/scss/layout/Content.scss';
 
-export default function SiteLayout({children}) {
+export default function SiteLayout({children, name}) {
     return (
         <>
             <Header/>

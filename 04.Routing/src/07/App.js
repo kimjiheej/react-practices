@@ -1,7 +1,5 @@
 import React from 'react';
 import {useRoutes} from 'react-router';
-
-
 import {Main} from "./component/main";
 import {Guestbook} from "./component/guestbook";
 import {About} from "./component/about";

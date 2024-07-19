@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Routes, Route} from 'react-router';
 
-import {Main} from "./component/main";
+import {Main} from "./component/main/";
 import {About} from "./component/about";
 import {Guestbook} from "./component/guestbook";
 import {Gallery} from "./component/gallery";
