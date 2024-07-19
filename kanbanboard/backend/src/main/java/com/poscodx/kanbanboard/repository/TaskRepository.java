@@ -1,5 +1,6 @@
 package com.poscodx.kanbanboard.repository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,10 +25,10 @@ public class TaskRepository {
 			return sqlSession.insert("task.createTask",taskVo); 
 		}
 
-		public int modifyStatus(Long no, String done) {
-			return sqlSession.update("task.updateStatus", Map.of("no",no,"done",done)); 
+		public Boolean updateStatus(Long no, String done) {
+		    int result = sqlSession.update("task.updateStatus", Map.of("no", no, "done", done));
+		    return result == 1;
 		}
-
 		public int deleteTask(Long no) {
 			return sqlSession.delete("task.deleteTask", no); 
 		}    

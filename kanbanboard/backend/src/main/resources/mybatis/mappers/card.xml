@@ -11,5 +11,4 @@
  		    order by no desc
 		]]>
 	</select>
-	
 </mapper>

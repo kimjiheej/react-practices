@@ -1,5 +1,6 @@
 package com.poscodx.kanbanboard.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.poscodx.kanbanboard.dto.JsonResult;
@@ -50,13 +52,13 @@ public class ApiController {
 	}
 	
 
+   // 수정이 왜 계속 에러가 날까 ^^ 
 	@PutMapping("/api/task/{no}")
-	public ResponseEntity<JsonResult> updateTask(@PathVariable("no") Long no, @RequestBody String done) {
+	public ResponseEntity<JsonResult> updateTask(@PathVariable("no") Long no, @RequestParam("done") String done) {
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body(JsonResult.success(taskRepository.modifyStatus(no,done)));
+				.body(JsonResult.success(taskRepository.updateStatus(no, done)));
 	}
-	
 	@DeleteMapping("/api/task/{no}")
 	public ResponseEntity<JsonResult> deleteTask(@PathVariable("no") Long no) {
 		return ResponseEntity 
