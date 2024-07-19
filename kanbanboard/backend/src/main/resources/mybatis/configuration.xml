@@ -5,9 +5,13 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     	
-	<typeAliases>
-	</typeAliases>
+<typeAliases>
+	<typeAlias type="com.poscodx.kanbanboard.vo.TaskVo" alias="taskvo" />
+	<typeAlias type="com.poscodx.kanbanboard.vo.CardVo" alias="cardvo" />
+</typeAliases>
 	
-	<mappers>
-	</mappers>
+<mappers>
+	<mapper resource="mybatis/mappers/task.xml" />
+	<mapper resource="mybatis/mappers/card.xml" />
+</mappers>
 </configuration>

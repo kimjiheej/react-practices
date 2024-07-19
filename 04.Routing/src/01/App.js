@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Main from "./component/Main";
 import Gallery from "./component/Gallery";
 import Guestbook from "./component/Guestbook";
@@ -7,15 +7,16 @@ import Error404 from "./component/Error404";
 export default function App() {
     const [route, setRoute] = useState('');
 
-    const handlerHashChange = () => {
-        console.log(window.location.hash); 
-        setRoute(window.location.hash.substring(1)); 
+    const hadlerHashChage = () => {
+        console.log(window.location.hash);
+        setRoute(window.location.hash.substring(1));
     }
 
     useEffect(() => {
-        window.addEventListener("hashchange", handlerHashChange);
+        window.addEventListener("hashchange", hadlerHashChage);
+
         return () => {
-            window.removeEventListener("hashchange", handlerHashChange);
+            window.removeEventListener("hashchange", hadlerHashChage);
         }
     }, []);
 
@@ -29,7 +30,7 @@ export default function App() {
             case '/gallery':
                 return <Gallery />;
             default :
-                return <Error404 />;
+                return <Error404 />;                    
         }
     })();
 }

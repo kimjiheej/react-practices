@@ -30,4 +30,8 @@ public class KanbanboardApplication {
 			}
 		};
 	}
+
+	public static void main(String[] args) {
+		findTaskList
+	}
 }

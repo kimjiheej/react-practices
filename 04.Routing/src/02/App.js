@@ -5,45 +5,27 @@ import Guestbook from "./component/Guestbook";
 import Error404 from "./component/Error404";
 
 export default function App() {
+    const [route, setRoute] = useState({page: window.location.href.substring(window.location.href.lastIndexOf("/"))});
 
-    const [route, setRoute] = useState({page: window.location.href.substring(window.location.href.lastIndexOf("/"))}); 
-    
-
-    const handlerPopState  = () => {
-        setRoute(e.state ? e.state : {page: "/"}); 
-    }
-    useEffect(() => {
-        window.addEventListener("popstate", )
-        return () => {
-
-        }
-    })
     const handleLinkClick = (e) => {
-
         e.preventDefault();
-        
-      const url =   e.target.href.substring(e.target.href.lastIndex("/"))
-      window.history.pushState({page: url}, e.target.text, url); 
-      setRoute({page: url});  
+
+        const url = e.target.href.substring(e.target.href.lastIndexOf("/"));
+        window.history.pushState({page: url}, e.target.text, url);
+        setRoute({page: url});
     }
 
-    const Router = function () {
-        let component = null;
 
-        switch (route.page) {
-            case '/':
-                component = <Main/>;
-                break;
-            case '/gallery':
-                component = <Gallery/>;
-                break;
-            case '/guestbook':
-                component = <Guestbook/>;
-                break;
+    useEffect(() => {
+        const handlerPopState = (e) => {
+            setRoute(e.state ? e.state : {page: "/"});
         }
-
-        return component;
-    };
+        
+        window.addEventListener("popstate", handlerPopState);
+        return () => {
+            window.removeEventListener("popstate", handlerPopState);
+        }
+    }, []);
 
     return (
         <div>
@@ -64,9 +46,9 @@ export default function App() {
                         default :
                             return <Error404 />;                    
                     }
-                })()
+                })()           
             }
+
         </div>
     )
 }
-

@@ -43,7 +43,6 @@ public class ApiController {
 	
 	@DeleteMapping("/api/{no}")
 	public ResponseEntity<JsonResult> delete(@PathVariable("no") Long no) {
-	       
 	        return ResponseEntity
 	        		.status(HttpStatus.OK)
 	        		.body(JsonResult.success(emaillistRepository.delete(no)));

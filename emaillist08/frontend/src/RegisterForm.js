@@ -2,6 +2,7 @@ import React from 'react';
 import * as styles from './assets/scss/RegisterForm.scss';
 
 function RegisterForm({addEmail}) {
+    
     return (
         <form
             className={styles.Register_Form}
@@ -12,6 +13,7 @@ function RegisterForm({addEmail}) {
                      lastName: e.target.lastName.value,
                      email: e.target.email.value
                 });
+        
             }}>
             <input type='text' name='firstName' placeholder='성' className={styles.Input_First_Name} />
             <input type='text' name='lastName' placeholder='이름' className={styles.Input_Last_Name} />
@@ -22,3 +24,4 @@ function RegisterForm({addEmail}) {
 }
 
 export default RegisterForm;
+

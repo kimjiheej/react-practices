@@ -12,13 +12,6 @@ function Email({ no, firstName, lastName, email, onDelete }) {
         }
     };
 
-    useEffect(() => {
-        console.log('Email 컴포넌트가 마운트됐습니다.');
-        return () => {
-            console.log('Email 컴포넌트가 언마운트됐습니다.');
-        };
-    }, []);
-
     return (
         <li className={_Email}>
             <h4>{firstName} {lastName}</h4>
@@ -29,3 +22,4 @@ function Email({ no, firstName, lastName, email, onDelete }) {
 }
 
 export default Email;
+
