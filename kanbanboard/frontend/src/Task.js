@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { _Task, Task_Remove } from './assets/scss/Task.scss';
 
 function Task({ task, onToggle, onRemove }) {
-  const [isChecked, setIsChecked] = useState(task.done);
+  const [isChecked, setIsChecked] = useState(task.done === 'true');
 
   const handleCheckboxChange = () => {
     const newCheckedStatus = !isChecked;
@@ -18,7 +18,7 @@ function Task({ task, onToggle, onRemove }) {
         onChange={handleCheckboxChange}
       />
       {task.name}
-      <a href="#" className={Task_Remove} onClick={() => onRemove(task.no)}></a>
+      <a href="#" className={Task_Remove} onClick={() => onRemove(task.no)}>삭제</a>
     </li>
   );
 }
