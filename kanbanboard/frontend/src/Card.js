@@ -57,6 +57,15 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
 
   const handleRemove = (taskId) => {
     setTasks(prevTasks => prevTasks.filter(task => task.no !== taskId));
+
+    // Optional: You can also send a request to the server to delete the task.
+    try {
+      fetch(`/api/task/${taskId}`, {
+        method: 'DELETE',
+      });
+    } catch (err) {
+      console.error('Error deleting task:', err);
+    }
   };
 
   const handleAddTask = (newTask) => {
