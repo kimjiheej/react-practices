@@ -1,4 +1,4 @@
-/* CardList */
+/* CardList.scss */
 .Card_List {
   position: relative;
   list-style-type: none;
@@ -16,7 +16,7 @@
     top: 0;
     right: 0;
     width: 1px;
-    height: 99%;
+    height: 100%; /* 세로줄이 전체 높이를 차지하도록 설정 */
     background: linear-gradient(to bottom, #eee 0%, #ccc 50%, #eee 100%) fixed;
   }
 

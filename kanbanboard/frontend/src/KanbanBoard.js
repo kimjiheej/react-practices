@@ -31,7 +31,7 @@ function KanbanBoard() {
   return (
     <div className="Kanban_Board">
       <CardList title="To Do" cards={toDoCards} />
-      <CardList title="In Progress" cards={inProgressCards} />
+      <CardList title="Doing" cards={inProgressCards} />
       <CardList title="Done" cards={doneCards} />
     </div>
   );
