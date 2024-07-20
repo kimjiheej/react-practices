@@ -51,15 +51,10 @@ public class ApiController {
 				.body(JsonResult.success(taskVo));
 	}
 	
-
-   // 수정이 왜 계속 에러가 날까 ^^ 
 	@PutMapping("/api/task/{no}")
 	public ResponseEntity<JsonResult> updateTask(@PathVariable("no") Long no, @RequestBody TaskVo taskVo) {
 	    // TaskVo에서 새로운 상태를 가져옵니다.
 	    String newStatus = taskVo.getDone();
-
-	    // DB에서 해당 태스크를 업데이트합니다.
-	
 
 	        return ResponseEntity
 	                .status(HttpStatus.OK)

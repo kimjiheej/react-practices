@@ -4,14 +4,14 @@
 
 <mapper namespace="task">
 
-    <select id="findTaskList" parameterType="long" resultType="taskvo">
-			<![CDATA[	
-			  select no, name, done
-		      	from task
-		       where card_no=#{cardNo}	
-		  	order by no desc
-	  	]]>	
-	</select>
+  <select id="findTaskList" parameterType="long" resultType="taskvo">
+    <![CDATA[
+    SELECT no, name, done
+    FROM task
+    WHERE card_no = #{cardNo}
+    ORDER BY no DESC
+    ]]>
+</select>
 	
 	 
 <insert id="createTask" parameterType="taskvo">
