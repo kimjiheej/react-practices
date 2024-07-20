@@ -39,8 +39,21 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
     );
   };
 
-  const handleRemove = (taskId) => {
-    setTasks(prevTasks => prevTasks.filter(task => task.no !== taskId));
+  const handleRemove = async (taskId) => {
+    try {
+      const response = await fetch(`/api/task/${taskId}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const json = await response.json();
+      if (json.result === 'success') {
+        setTasks(prevTasks => prevTasks.filter(task => task.no !== taskId));
+      } else {
+        console.error('API error:', json.message);
+      }
+    } catch (err) {
+      console.error('Error deleting task:', err);
+    }
   };
 
   return (
