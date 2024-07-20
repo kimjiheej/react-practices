@@ -6,7 +6,7 @@ function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
   const [newTaskName, setNewTaskName] = useState('');
 
   const handleAddTask = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // 폼 제출 시 페이지 새로 고침 방지
     if (newTaskName.trim() === '') return;
 
     try {

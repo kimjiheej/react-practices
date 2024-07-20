@@ -63,6 +63,7 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const json = await response.json();
       if (json.result === 'success') {
+        // 삭제 후 상태 업데이트
         setTasks(prevTasks => prevTasks.filter(task => task.no !== taskId));
       } else {
         console.error('API error:', json.message);
