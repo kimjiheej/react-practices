@@ -23,7 +23,7 @@ function Task({ task, onToggle, onRemove }) {
         onChange={handleCheckboxChange}
       />
       {task.name}
-      <a href="#" className={Task_Remove} onClick={handleRemoveClick}></a>
+      <a href="" className={Task_Remove} onClick={handleRemoveClick}></a>
     </li>
   );
 }
