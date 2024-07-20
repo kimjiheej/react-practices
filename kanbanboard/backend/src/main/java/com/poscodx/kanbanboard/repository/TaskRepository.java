@@ -25,8 +25,14 @@ public class TaskRepository {
 			return sqlSession.insert("task.createTask",taskVo); 
 		}
 
-		public Boolean updateStatus(Long no, String done) {
-		    int result = sqlSession.update("task.updateStatus", Map.of("no", no, "done", done));
+	
+		public boolean updateStatus(Long no, String done) {
+		    // 'no'와 'done' 값을 가진 Map을 생성하고, 이를 사용하여 업데이트 쿼리를 실행합니다.
+		    int result = sqlSession.update("task.updateStatus", Map.of(
+		        "no", no,
+		        "done", done
+		    ));
+		    // 업데이트가 성공적으로 이루어진 경우에만 true를 반환합니다.
 		    return result == 1;
 		}
 		public int deleteTask(Long no) {

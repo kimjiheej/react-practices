@@ -21,12 +21,10 @@
 </insert>
 
 <update id="updateStatus" parameterType="map">
-		<![CDATA[
-			update task 
-			   set done=#{done}
-			 where no=#{no}	
-	  	]]>	
-	</update>
+    UPDATE task
+    SET done = #{done}
+    WHERE no = #{no}
+</update>
 
    <delete id="deleteTask" parameterType="long">
     <![CDATA[
