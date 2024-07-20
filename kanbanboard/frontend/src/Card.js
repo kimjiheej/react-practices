@@ -78,11 +78,9 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
     }
   };
 
-  const handleAddTask = (newTask) => {
-    setTasks(prevTasks => [
-      ...prevTasks,
-      newTask
-    ]);
+  const handleAddTask = async (newTask) => {
+    // 태스크를 추가한 후 서버에서 최신 태스크 목록을 가져온다
+    await fetchTasks();
   };
 
   return (

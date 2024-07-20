@@ -26,8 +26,9 @@ function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const json = await response.json();
       if (json.result === 'success') {
-        onAddTask(json.data); // 서버에 성공적으로 추가된 후 클라이언트 상태 업데이트
-        setNewTaskName('');
+        // 태스크 추가 후, 최신 태스크 목록을 서버에서 가져온다
+        await onAddTask(); 
+        setNewTaskName(''); // 입력 필드 초기화
       } else {
         console.error('API error:', json.message);
       }
