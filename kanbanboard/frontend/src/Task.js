@@ -12,14 +12,14 @@ function Task({ task, onToggle, onRemove }) {
 
   return (
     <li className={_Task}>
-      <input
-        type="checkbox"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
-      />
-      {task.name}
-      <a href="#" className={Task_Remove} onClick={() => onRemove(task.no)}></a>
-    </li>
+    <input
+      type="checkbox"
+      checked={isChecked}
+      onChange={handleCheckboxChange}
+    />
+    {task.name}
+    <a href="" className={Task_Remove} onClick={() => onRemove(task.no)}></a>
+  </li>
   );
 }
 

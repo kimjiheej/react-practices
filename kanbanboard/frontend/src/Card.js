@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { _Card, Card_Title, Card_Title_Open } from './assets/scss/Card.scss';
 import TaskList from './TaskList';
 
@@ -72,12 +72,19 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
     }
   };
 
+  const handleAddTask = (newTask) => {
+    setTasks(prevTasks => [
+      ...prevTasks,
+      newTask
+    ]);
+  };
+
   return (
     <div className={`${_Card} ${isOpen ? Card_Title_Open : ''}`}>
       <div className={Card_Title} onClick={toggleCard}>{title}</div>
       <div>{description}</div>
       {isOpen && (
-        <TaskList tasks={tasks} onTaskToggle={handleTaskToggle} onRemove={handleRemove} />
+        <TaskList tasks={tasks} onTaskToggle={handleTaskToggle} onRemove={handleRemove} onAddTask={handleAddTask} cardNo={no} />
       )}
     </div>
   );
