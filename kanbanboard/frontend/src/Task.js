@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { _Task, Task_Remove } from './assets/scss/Task.scss';
 
 function Task({ task, onToggle, onRemove }) {
-  const [isChecked, setIsChecked] = useState(task.done === 'true');
+  const [isChecked, setIsChecked] = useState(task.done === 'Y');
 
   const handleCheckboxChange = () => {
     const newCheckedStatus = !isChecked;

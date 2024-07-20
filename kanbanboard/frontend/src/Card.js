@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { _Card, Card_Title, Card_Title_Open } from './assets/scss/Card.scss';
 import TaskList from './TaskList';
 
@@ -31,12 +31,30 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
     }
   };
 
-  const handleTaskToggle = (taskId, isChecked) => {
-    setTasks(prevTasks =>
-      prevTasks.map(task =>
-        task.no === taskId ? { ...task, done: isChecked } : task
-      )
+  const handleTaskToggle = async (taskId, isChecked) => {
+    const updatedTasks = tasks.map(task =>
+      task.no === taskId ? { ...task, done: isChecked ? 'Y' : 'N' } : task
     );
+    setTasks(updatedTasks);
+
+    try {
+      const response = await fetch(`/api/task/${taskId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          done: isChecked ? 'Y' : 'N',
+        }),
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const json = await response.json();
+      if (json.result !== 'success') {
+        console.error('API error:', json.message);
+      }
+    } catch (err) {
+      console.error('Error updating task:', err);
+    }
   };
 
   const handleRemove = async (taskId) => {
