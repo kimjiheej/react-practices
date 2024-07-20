@@ -55,16 +55,26 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
     }
   };
 
-  const handleRemove = (taskId) => {
-    setTasks(prevTasks => prevTasks.filter(task => task.no !== taskId));
+  const handleRemove = async (taskId) => {
+    // 클라이언트 상태에서 태스크를 먼저 제거
+    const updatedTasks = tasks.filter(task => task.no !== taskId);
+    setTasks(updatedTasks);
 
-    // Optional: You can also send a request to the server to delete the task.
+    // 서버에 삭제 요청을 전송
     try {
-      fetch(`/api/task/${taskId}`, {
+      const response = await fetch(`/api/task/${taskId}`, {
         method: 'DELETE',
       });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
+      const json = await response.json();
+      if (json.result !== 'success') {
+        console.error('API error:', json.message);
+        // 서버 삭제 실패 시, 클라이언트 상태를 복구하지 않음
+      }
     } catch (err) {
       console.error('Error deleting task:', err);
+      // 서버 삭제 실패 시, 클라이언트 상태를 복구하지 않음
     }
   };
 
