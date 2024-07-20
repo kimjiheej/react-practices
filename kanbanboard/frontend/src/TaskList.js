@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Input_Add_Task, Task_List } from './assets/scss/TaskList.scss';
 import Task from './Task';
 
 function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
   const [newTaskName, setNewTaskName] = useState('');
+  const endOfTasksRef = useRef(null); // 추가: 참조를 위한 useRef
 
   const handleAddTask = async (e) => {
     e.preventDefault(); // 폼 제출 시 페이지 새로 고침 방지
@@ -35,8 +36,15 @@ function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
     }
   };
 
-  // 작업 정렬: 오름차순으로 정렬 (작업이 오래된 순서)
-  const sortedTasks = [...tasks].sort((a, b) => a.no - b.no);
+  // 작업 정렬: 내림차순 정렬 (가장 최근 작업이 위에 오도록)
+  const sortedTasks = [...tasks].sort((a, b) => b.no - a.no);
+
+  // 새 태스크 추가 후 자동 스크롤
+  useEffect(() => {
+    if (endOfTasksRef.current) {
+      endOfTasksRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [tasks]);
 
   return (
     <div className={Task_List}>
@@ -44,6 +52,7 @@ function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
         {sortedTasks.map(task => (
           <Task key={task.no} task={task} onToggle={onTaskToggle} onRemove={onRemove} />
         ))}
+        <div ref={endOfTasksRef} /> {/* 태스크 리스트의 끝에 위치한 참조 */}
       </ul>
       <form onSubmit={handleAddTask}>
         <input
