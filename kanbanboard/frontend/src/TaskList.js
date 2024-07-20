@@ -25,7 +25,8 @@ function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const json = await response.json();
       if (json.result === 'success') {
-        onAddTask(json.data); // 새로운 작업의 데이터 전달
+        // 새로운 작업을 tasks 배열의 마지막에 추가
+        onAddTask(json.data); // 새 작업을 추가
         setNewTaskName(''); // 입력 필드 초기화
       } else {
         console.error('API error:', json.message);
@@ -35,8 +36,8 @@ function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
     }
   };
 
-  // 작업 정렬: 기본적으로 내림차순으로 정렬 (작업이 추가된 순서)
-  const sortedTasks = [...tasks].sort((a, b) => b.no - a.no);
+  // 작업 정렬: 최신 작업이 맨 아래로 가도록 오름차순 정렬
+  const sortedTasks = [...tasks].sort((a, b) => a.no - b.no);
 
   return (
     <div className={Task_List}>
