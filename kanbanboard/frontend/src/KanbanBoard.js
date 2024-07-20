@@ -12,7 +12,7 @@ function KanbanBoard() {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const json = await response.json();
         if (json.result === 'success') {
-          setCards(json.data || []); // 데이터가 없을 경우 빈 배열로 초기화
+          setCards(json.data || []);
         } else {
           console.error('API error:', json.message);
         }
@@ -38,15 +38,14 @@ function KanbanBoard() {
         },
         body: JSON.stringify({
           name: taskName,
-          done: 'false',
+          done: 'N', // default to not done
           card_no: cardNo,
         }),
       });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const json = await response.json();
       if (json.result === 'success') {
-        // 새 작업이 성공적으로 추가되면 카드 목록을 다시 가져옵니다.
-        fetchCards();
+        fetchCards(); // 새 작업이 성공적으로 추가되면 카드 목록을 다시 가져옵니다.
       } else {
         console.error('API error:', json.message);
       }

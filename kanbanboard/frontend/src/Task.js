@@ -7,7 +7,7 @@ function Task({ task, onToggle, onRemove }) {
   const handleCheckboxChange = () => {
     const newCheckedStatus = !isChecked;
     setIsChecked(newCheckedStatus);
-    onToggle(task.no, newCheckedStatus);
+    onToggle(task.no, newCheckedStatus); // 상태 변경 함수 호출
   };
 
   return (

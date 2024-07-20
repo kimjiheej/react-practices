@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { _Card, Card_Title, Card_Title_Open } from './assets/scss/Card.scss';
 import TaskList from './TaskList';
 
 function Card({ no, title, description, tasks: initialTasks, isToDo }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [tasks, setTasks] = useState(initialTasks || []); // 초기값을 빈 배열로 설정
+  const [tasks, setTasks] = useState(initialTasks || []);
 
   const toggleCard = async () => {
-    if (!isOpen) {
-      // 카드가 열리기 전, 아직 task가 없으면 fetchTasks 호출
-      if (tasks.length === 0) {
-        await fetchTasks();
-      }
+    if (!isOpen && tasks.length === 0) {
+      await fetchTasks();
     }
     setIsOpen(!isOpen);
   };
@@ -22,7 +19,7 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const json = await response.json();
       if (json.result === 'success') {
-        setTasks(json.data || []); // 데이터가 없을 경우 빈 배열로 초기화
+        setTasks(json.data || []);
       } else {
         console.error('API error:', json.message);
       }
@@ -44,6 +41,7 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          no: taskId,
           done: isChecked ? 'Y' : 'N',
         }),
       });
@@ -79,7 +77,7 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
       <div className={Card_Title} onClick={toggleCard}>{title}</div>
       <div>{description}</div>
       {isOpen && (
-        <TaskList tasks={tasks} isToDo={isToDo} onTaskToggle={handleTaskToggle} onRemove={handleRemove} />
+        <TaskList tasks={tasks} onTaskToggle={handleTaskToggle} onRemove={handleRemove} />
       )}
     </div>
   );

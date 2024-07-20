@@ -8,8 +8,8 @@ function TaskList({ tasks, onTaskToggle, onRemove, onAddTask }) {
   const handleAddTask = (e) => {
     e.preventDefault();
     if (newTaskName.trim() !== '') {
-      onAddTask(newTaskName); // 작업 추가 로직
-      setNewTaskName(''); // 입력 필드 초기화
+      onAddTask(newTaskName);
+      setNewTaskName('');
     }
   };
 
