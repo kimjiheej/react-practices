@@ -4,7 +4,7 @@ import Task from './Task';
 
 function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
   const [newTaskName, setNewTaskName] = useState('');
-  const endOfTasksRef = useRef(null); // 추가: 참조를 위한 useRef
+  const endOfTasksRef = useRef(null); // 태스크 리스트 끝에 위치할 참조
 
   const handleAddTask = async (e) => {
     e.preventDefault(); // 폼 제출 시 페이지 새로 고침 방지
@@ -26,7 +26,7 @@ function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const json = await response.json();
       if (json.result === 'success') {
-        onAddTask(json.data); // 새 작업을 추가
+        onAddTask(json.data); // 새 태스크를 추가
         setNewTaskName(''); // 입력 필드 초기화
       } else {
         console.error('API error:', json.message);
@@ -36,15 +36,15 @@ function TaskList({ tasks, onTaskToggle, onRemove, onAddTask, cardNo }) {
     }
   };
 
-  // 작업 정렬: 내림차순 정렬 (가장 최근 작업이 위에 오도록)
-  const sortedTasks = [...tasks].sort((a, b) => b.no - a.no);
+  // 태스크를 추가하는 순서 유지: 최신 태스크가 아래로 가게 하기
+  const sortedTasks = [...tasks]; // 정렬을 제거하여 순서 유지
 
   // 새 태스크 추가 후 자동 스크롤
   useEffect(() => {
     if (endOfTasksRef.current) {
       endOfTasksRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [tasks]);
+  }, [tasks]); // 태스크가 변경될 때마다 자동으로 스크롤
 
   return (
     <div className={Task_List}>
