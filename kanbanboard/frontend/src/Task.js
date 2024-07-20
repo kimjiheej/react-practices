@@ -7,11 +7,11 @@ function Task({ task, onToggle, onRemove }) {
   const handleCheckboxChange = () => {
     const newCheckedStatus = !isChecked;
     setIsChecked(newCheckedStatus);
-    onToggle(task.no, newCheckedStatus); // 상태 변경 함수 호출
+    onToggle(task.no, newCheckedStatus);
   };
 
   const handleRemoveClick = (e) => {
-    e.preventDefault(); // 링크 클릭 시 기본 동작 방지
+    e.preventDefault();
     onRemove(task.no);
   };
 
