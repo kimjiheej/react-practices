@@ -10,7 +10,7 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
     if (!isOpen && tasks.length === 0) {
       await fetchTasks();
     }
-    setIsOpen(!isOpen);
+    setIsOpen(prev => !prev);
   };
 
   const fetchTasks = async () => {
@@ -84,7 +84,13 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
       <div className={Card_Title} onClick={toggleCard}>{title}</div>
       <div>{description}</div>
       {isOpen && (
-        <TaskList tasks={tasks} onTaskToggle={handleTaskToggle} onRemove={handleRemove} onAddTask={handleAddTask} cardNo={no} />
+        <TaskList
+          tasks={tasks}
+          onTaskToggle={handleTaskToggle}
+          onRemove={handleRemove}
+          onAddTask={handleAddTask}
+          cardNo={no}
+        />
       )}
     </div>
   );
