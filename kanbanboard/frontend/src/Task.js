@@ -4,10 +4,10 @@ import { _Task, Task_Remove } from './assets/scss/Task.scss';
 function Task({ task, onToggle, onRemove }) {
   const [isChecked, setIsChecked] = useState(task.done === 'Y');
 
-  const handleCheckboxChange = () => {
+  const handleCheckboxChange = async () => {
     const newCheckedStatus = !isChecked;
     setIsChecked(newCheckedStatus);
-    onToggle(task.no, newCheckedStatus);
+    await onToggle(task.no, newCheckedStatus); // 서버에 상태 업데이트 요청
   };
 
   const handleRemoveClick = (e) => {

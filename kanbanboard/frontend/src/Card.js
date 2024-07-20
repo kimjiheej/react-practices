@@ -49,9 +49,11 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
       const json = await response.json();
       if (json.result !== 'success') {
         console.error('API error:', json.message);
+        // 상태 업데이트 실패 시 클라이언트 상태를 복구하지 않음
       }
     } catch (err) {
       console.error('Error updating task:', err);
+      // 상태 업데이트 실패 시 클라이언트 상태를 복구하지 않음
     }
   };
 
@@ -79,8 +81,7 @@ function Card({ no, title, description, tasks: initialTasks, isToDo }) {
   };
 
   const handleAddTask = async (newTask) => {
-    // 태스크를 추가한 후 서버에서 최신 태스크 목록을 가져온다
-    await fetchTasks();
+    await fetchTasks(); // 태스크를 추가한 후 최신 태스크 목록을 서버에서 가져온다
   };
 
   return (
