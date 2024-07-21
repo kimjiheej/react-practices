@@ -9,7 +9,7 @@
     SELECT no, name, done
     FROM task
     WHERE card_no = #{cardNo}
-    ORDER BY no DESC
+    ORDER BY no asc
     ]]>
 </select>
 	

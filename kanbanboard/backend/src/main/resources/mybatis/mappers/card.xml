@@ -8,7 +8,7 @@
 		<![CDATA[	
     		  select no, title, description, status
       		    from card
- 		    order by no desc
+ 		    order by no asc
 		]]>
 	</select>
 </mapper>
